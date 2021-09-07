@@ -15,6 +15,8 @@ Including another URLconf
 """
 
 from django.urls import path,include
-
-urlpatterns = []
+from .views import PostCreateView
+urlpatterns = [
+    path('post/new/', PostCreateView.as_view(), name='post-create'),
+]
     
