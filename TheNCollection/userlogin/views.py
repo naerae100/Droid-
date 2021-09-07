@@ -45,7 +45,7 @@ def login_user(request):
                     return redirect('/admins')
                 elif not user.is_staff:
                     login(request, user)
-                    return redirect('droid/home')
+                    return redirect('/')
             else:
                 messages.add_message(request, messages.ERROR, 'Invalid Username or Password')
                 return render(request, 'userlogin/login.html', {'form_login':form})
