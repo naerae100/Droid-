@@ -1,0 +1,67 @@
+{% extends 'layout-admin.html' %}
+{% load static %}
+{% block title %}
+<title>Admin-Dashboard</title>
+{% endblock %}
+{% block main_content %}
+<style>
+    .card-body a{
+    text-decoration:none;
+    color:#fff;
+    }
+
+    .card-body a:hover{
+    color:orange;
+    }
+
+</style>
+<div class="container">
+    <h1>Admin Dashboard</h1>
+    {% include 'message.html' %}
+    <div class="row">
+        <div class="col">
+            <div class="card text-white bg-primary mb-3" style="max-width: 35rem;">
+                <div class="card-header text-center">Total post</div>
+                <div class="card-body">
+                    <a href="/products/get_post">
+                        <h1 class="card-title text-center">{{post}}</h1></a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-white bg-info mb-3" style="max-width: 35rem;">
+                <div class="card-header text-center">Total profile</div>
+                <div class="card-body">
+                    <a href="/products/get_profile"><h1 class="card-title text-center">{{profile}}</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card text-white bg-warning mb-3" style="max-width: 35rem;">
+                <div class="card-header text-center">Total user</div>
+                <div class="card-body">
+                    <a href="/administration/admins/users"><h1 class="card-title text-center">{{user}}</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-white bg-success mb-3" style="max-width: 35rem;">
+                <div class="card-header text-center">Total admin</div>
+                <div class="card-body">
+                    <a href="/administration/admins/admins"><h1 class="card-title text-center">{{admin}}</h1></a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+{% endblock %}

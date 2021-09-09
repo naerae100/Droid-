@@ -42,7 +42,7 @@ def login_user(request):
             if user is not None:
                 if user.is_staff:
                     login(request, user)
-                    return redirect('/admins')
+                    return redirect('/administration')
                 elif not user.is_staff:
                     login(request, user)
                     return redirect('/')

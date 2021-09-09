@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', include('userlogin.urls')),
     path('droid/', include('Droid.urls')),
+    path('administration/', include('administration.urls'))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
