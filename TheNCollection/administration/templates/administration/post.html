@@ -1,0 +1,52 @@
+{% extends 'layout-admin.html' %}
+{% block title %}
+<title>All post</title>
+{% endblock%}
+
+{% block main_content %}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-10 offset-md-1">
+            <h1 class="text-center">All post</h1>
+            <div class="card p-2">
+               {% include 'message.html' %}
+                <table class="table-striped ">
+                    <tr>
+                        <th>Date</th>
+                        <th>Username</th>
+                        <th>Description</th>
+                        <th>Post Picture</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% for i in posts %}
+                    <tr>
+                        <td>{{ i.date_posted }}</td>
+                        <td> {{ i.author }}</td>
+                        <td>{{ i.content }}</td>
+                        <td> {% if i.file %}
+                            {% if i.extension == '.jpg' or i.extension == 'jpeg' or i.extension == 'png' %}
+                              <a href="{{ i.file.url }}"  download ><img src="{{ i.file.url }}" width="110" alt="" class="img-fluid "></a>
+                            {% elif i.extension == '.mp4' %}
+                              <div class="embed-responsive embed-responsive-16by9">
+                                <video id="video-1_html_api" class="vjs-tech" preload="auto" autoplay >
+                                  <source src="{{ i.file.url }}" type="video/mp4" class="embed-responsive">
+                                </video>
+                              </div>
+
+                            {% else %}
+                              <a href="{{ i.file.url }}"  download class="text-dark"><h5>{{ i.file }}</h5></a>
+                            {% endif %}
+                          {% endif %}</td>
+                        <td><a class="btn btn-primary btn-sm"
+                               href="/administration/admins/postdelete/{{ i.id }}">Delete</a> &nbsp;
+                            </td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main_content %}

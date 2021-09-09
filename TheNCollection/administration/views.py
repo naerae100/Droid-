@@ -58,6 +58,33 @@ def demote_user(request,user_id):
     user.is_staff=False
     user.save()
     messages.add_message(request, messages.SUCCESS, 'Admin demoted to user')
-    return redirect('/admins/users')    
+    return redirect('/admins/users')   
+
+@login_required
+@admin_only
+def get_profile(request):
+    profile = Profile.objects.filter().order_by('-id')
+    context = {
+        'profiles': profile
+    }
+    return render(request, 'administration/profile.html', context)
+
+@login_required
+@admin_only
+def get_post(request):
+    post = Post.objects.filter().order_by('-id')
+    context = {
+        'posts': post
+    }
+    return render(request, 'administration/post.html', context)
+
+@login_required
+@admin_only
+def delete_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    return redirect('/administration/admins/getpost')    
+
+
 
 
