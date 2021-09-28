@@ -15,7 +15,7 @@ from django.urls import reverse_lazy
 from django.contrib.staticfiles.views import serve
 
 from django.db.models import Q
-
+from userlogin.auth import user_only,admin_only,unauthenticated_user
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     template_name = 'Droid/post_form.html'
