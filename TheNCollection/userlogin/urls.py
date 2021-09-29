@@ -1,11 +1,12 @@
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
+app_name='nemo'
 
 urlpatterns = [
-    path('', views.homepage),
-    path('register', views.register_user),
-    path('login', views.login_user),
+    path('', views.homepage,name='home'),
+    path('register', views.register_user,name = "register"),
+    path('login', views.login_user,name='login_user'),
     path('logout', views.logout_user),
     path('admins/users',views.get_users),
     path('admins/admins', views.get_admins),
