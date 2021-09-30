@@ -85,6 +85,14 @@ def delete_post(request, post_id):
     post.delete()
     return redirect('/administration/admins/getpost')    
 
+@login_required
+@admin_only
+def delete_user(request, user_id):
+    user = User.objects.get(id=user_id)
+    user.delete()
+    return redirect('/administration/admins/users')    
+
+
 
 
 

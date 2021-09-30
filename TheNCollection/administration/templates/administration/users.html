@@ -23,7 +23,7 @@
                         <td> {{ i.username }}</td>
                         <td> {{ i.email }}</td>
                         <td><a class="btn btn-primary btn-sm"
-                               href="#">Deactivate</a> &nbsp;
+                               href="/administration/delete_user/{{i.id}}">Delete</a> &nbsp;
                             <a class="btn btn-danger btn-sm"
                                href="/administration/promote_user/{{i.id}}"
                                onclick="return confirm('Are you sure want to promote this user?')"

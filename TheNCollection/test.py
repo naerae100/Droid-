@@ -1,5 +1,7 @@
 from django.test import TestCase, Client
 from django.urls import reverse
+from userlogin.forms import LoginForm
+from django.contrib.auth.models import User
 
 class Test (TestCase):
     def setUp(self):
@@ -20,6 +22,22 @@ class Test (TestCase):
         response = self.client.get( reverse('nemo:home'))
         self.assertEqual(response.status_code,200)
         self.assertTemplateUsed(response,'userlogin/homepage.html')
+
+    
+    def create_user(self, username="nischal", password="bade134@"):
+        return User.objects.create(username=username, password=password)
+    def test_valid_form(self):
+        w = User.objects.create(username='Foo', password='Bar')
+        data = {'username':w.username,'password':w.password}
+        form = LoginForm(data=data)
+        self.assertTrue(form.is_valid())
+
+    def test_invalid_form(self):
+        w = User.objects.create(username='Foo', password='')
+        data = {'username':w.username,'password':w.password}
+        form = LoginForm(data=data)
+        self.assertFalse(form.is_valid())
+        
 
         
             
