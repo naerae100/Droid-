@@ -24,7 +24,7 @@ class Test (TestCase):
         self.assertTemplateUsed(response,'userlogin/homepage.html')
 
     
-    def create_user(self, username="nischal", password="bade134@"):
+    def create_user(self, username="naerae100", password="@GTFo@2025"):
         return User.objects.create(username=username, password=password)
     def test_valid_form(self):
         w = User.objects.create(username='Foo', password='Bar')
